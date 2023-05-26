@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sudoku Solver</title>
+        <meta name="description" content="">
+
+        <link rel="shortcut icon" href="favicon.ico">
+
+        <!-- Latest Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+          table { border-collapse: collapse; font-family: Calibri, sans-serif; }
+          colgroup, tbody { border: solid medium; }
+          td { border: solid thin; height: 2.4em; width: 2.4em; text-align: center; padding: 0; }
+
+    		</style>
+        <!-- jQuery Library -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest Compiled JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <body>
+      <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 mx-auto">
+            <h1>Result</h1>
+            <h4> Solved in {{dict_to_return['time_elapsed']}}</h2>
+              <table class="text-center">
+                <caption></caption>
+                <colgroup><col><col><col>
+                <colgroup><col><col><col>
+                <colgroup><col><col><col>
+                <tbody>
+                 <tr> <td>{{dict_to_return['final_result'][0]}}<td>{{dict_to_return['final_result'][1]}}<td>{{dict_to_return['final_result'][2]}}<td>{{dict_to_return['final_result'][3]}}<td>{{dict_to_return['final_result'][4]}}<td>{{dict_to_return['final_result'][5]}}<td>{{dict_to_return['final_result'][6]}}<td>{{dict_to_return['final_result'][7]}}<td>{{dict_to_return['final_result'][8]}}
+                 <tr> <td>{{dict_to_return['final_result'][9]}}<td>{{dict_to_return['final_result'][10]}}<td>{{dict_to_return['final_result'][11]}}<td>{{dict_to_return['final_result'][12]}}<td>{{dict_to_return['final_result'][13]}}<td>{{dict_to_return['final_result'][14]}}<td>{{dict_to_return['final_result'][15]}}<td>{{dict_to_return['final_result'][16]}}<td>{{dict_to_return['final_result'][17]}}
+                 <tr> <td>{{dict_to_return['final_result'][18]}}<td>{{dict_to_return['final_result'][19]}}<td>{{dict_to_return['final_result'][20]}}<td>{{dict_to_return['final_result'][21]}}<td>{{dict_to_return['final_result'][22]}}<td>{{dict_to_return['final_result'][23]}}<td>{{dict_to_return['final_result'][24]}}<td>{{dict_to_return['final_result'][25]}}<td>{{dict_to_return['final_result'][26]}}
+                <tbody>
+                 <tr> <td>{{dict_to_return['final_result'][27]}}<td>{{dict_to_return['final_result'][28]}}<td>{{dict_to_return['final_result'][29]}}<td>{{dict_to_return['final_result'][30]}}<td>{{dict_to_return['final_result'][31]}}<td>{{dict_to_return['final_result'][32]}}<td>{{dict_to_return['final_result'][33]}}<td>{{dict_to_return['final_result'][34]}}<td>{{dict_to_return['final_result'][35]}}
+                 <tr> <td>{{dict_to_return['final_result'][36]}}<td>{{dict_to_return['final_result'][37]}}<td>{{dict_to_return['final_result'][38]}}<td>{{dict_to_return['final_result'][39]}}<td>{{dict_to_return['final_result'][40]}}<td>{{dict_to_return['final_result'][41]}}<td>{{dict_to_return['final_result'][42]}}<td>{{dict_to_return['final_result'][43]}}<td>{{dict_to_return['final_result'][44]}}
+                 <tr> <td>{{dict_to_return['final_result'][45]}}<td>{{dict_to_return['final_result'][46]}}<td>{{dict_to_return['final_result'][47]}}<td>{{dict_to_return['final_result'][48]}}<td>{{dict_to_return['final_result'][49]}}<td>{{dict_to_return['final_result'][50]}}<td>{{dict_to_return['final_result'][51]}}<td>{{dict_to_return['final_result'][52]}}<td>{{dict_to_return['final_result'][53]}}
+                <tbody>
+                 <tr> <td>{{dict_to_return['final_result'][54]}}<td>{{dict_to_return['final_result'][55]}}<td>{{dict_to_return['final_result'][56]}}<td>{{dict_to_return['final_result'][57]}}<td>{{dict_to_return['final_result'][58]}}<td>{{dict_to_return['final_result'][59]}}<td>{{dict_to_return['final_result'][60]}}<td>{{dict_to_return['final_result'][61]}}<td>{{dict_to_return['final_result'][62]}}
+                 <tr> <td>{{dict_to_return['final_result'][63]}}<td>{{dict_to_return['final_result'][64]}}<td>{{dict_to_return['final_result'][65]}}<td>{{dict_to_return['final_result'][66]}}<td>{{dict_to_return['final_result'][67]}}<td>{{dict_to_return['final_result'][68]}}<td>{{dict_to_return['final_result'][69]}}<td>{{dict_to_return['final_result'][70]}}<td>{{dict_to_return['final_result'][71]}}
+                 <tr> <td>{{dict_to_return['final_result'][72]}}<td>{{dict_to_return['final_result'][73]}}<td>{{dict_to_return['final_result'][74]}}<td>{{dict_to_return['final_result'][75]}}<td>{{dict_to_return['final_result'][76]}}<td>{{dict_to_return['final_result'][77]}}<td>{{dict_to_return['final_result'][78]}}<td>{{dict_to_return['final_result'][79]}}<td>{{dict_to_return['final_result'][80]}}
+              </table>
+              <button type="button" class="btn btn-warning">Solve step by step</button><br>
+              <button type="button submit" class="btn btn-outline btn-success" value="Submit" onclick = "window.location.href='/';">New puzzle</button>
+
+              </div>
+            </div>
+            </div>
+          </div>
+
+
+    </body>
+</html>

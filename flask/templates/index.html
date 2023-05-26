@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sudoku Solver</title>
+        <meta name="description" content="">
+
+        <link rel="shortcut icon" href="favicon.ico">
+
+        <!-- Latest Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- jQuery Library -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest Compiled JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+      <div class="container-fluid">
+            {% if request.args.get('error') %}
+            <div class="row">
+              <div class="col-sm-8 mx-auto">
+                  <div class="alert alert-danger text-center" role="alert">
+                    {{ request.args.get('error') }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+        <div class="row">
+          <div class="col-sm-12">
+            <h1 class="text-center">Sudoku Solver</h1>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-sm-6 mx-auto">
+              <h2 class="text-center">Enter a puzzle</h2>
+
+              <form action="/solve" method="post">
+                <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter Sudoku Puzzle here" name="puzzle" aria-label="Enter Sudoku Puzzle here" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button type="button submit" class="btn btn-outline btn-success" value="Submit">Solve</button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 mx-auto text-center">
+              <button type="button" class="btn btn-secondary" onclick = "window.location.href='/history.html';">Puzzle History</button>
+            </div>
+          </div>
+      </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,11 @@
+db: sudoku
+user: flask-app
+password: kolhfgh124
+table Puzzles
+
+ID int NOT NULL AUTO_INCREMENT,
+    ->     Puzzle varchar(81) NOT NULL,
+    ->     Submited varchar(100) NOT NULL,
+    ->     PRIMARY KEY (ID)
+    -> );
+
