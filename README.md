@@ -1,4 +1,5 @@
-# Compose Sample Application
+
+# Sudoku Solver API
 
 ## NGINX Reverse Proxy -> WSGI -> Python/Flask Backend
 
@@ -8,15 +9,25 @@ Project structure:
 .
 ├── compose.yaml
 ├── flask
-│   ├── app.py
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   └── wsgi.py
+│   ├── static
+│   │   └── favicon.ico    
+│   ├── templates
+│   │   └── error.html
+│   │   └── index.html
+│   │   └── result.html
+│   ├── app.py
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   ├── notgraphical.py
+│   ├── db.txt
+│   └── wsgi.py
 └── nginx
     ├── default.conf
     ├── Dockerfile
     ├── nginx.conf
-    └── start.sh
+    └── start.sh
+└── db
+    ├── password.txt
 ```
 
 [_compose.yaml_](compose.yaml)
@@ -25,11 +36,34 @@ Project structure:
 services:
   nginx-proxy:
     build: nginx
+    restart: always
+    volumes:
+      - ./nginx/default.conf:/tmp/default.conf
+    environment:
+      - FLASK_SERVER_ADDR=flask-app:8000
     ports:
-    - 80:80
+      - "80:80"
+    depends_on:
+      - flask-app
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:80/health-check || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    command: /app/start.sh
   flask-app:
     build: flask
-    ...
+    restart: always
+    ports:
+      - '8000:8000'
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:8000/flask-health-check || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    command: gunicorn -w 3 -t 60 -b 0.0.0.0:8000 app:app
+  ...
+
 ```
 
 The compose file defines an application with two services `nginx-proxy` and `flask-app`.
@@ -65,7 +99,7 @@ After the application starts, navigate to `http://localhost:80` in your web brow
 
 ```bash
 $ curl localhost:80
-Hello World!
+Returns the index.html template page
 ```
 
 Stop and remove the containers
